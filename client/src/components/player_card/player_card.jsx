@@ -3,7 +3,12 @@ import styles from "./player_card.module.css";
 
 const Player_card = ({ name, position }) => {
   return (
-    <div className={styles.frame}>
+    <div
+      className={styles.frame}
+      onClick={() => {
+        console.log("fuckk");
+      }}
+    >
       <div className={styles.name_img_container}>
         <div className={styles.rectangle} />
         <div className={styles.name}>{name}</div>

@@ -1,4 +1,4 @@
-.header {
+/* .header {
   height: 120px;
   position: relative;
   width: 1180px;
@@ -50,4 +50,99 @@
   position: absolute;
   top: 20px;
   width: 80px;
+} */
+
+.header {
+  height: 120px;
+  position: relative;
+  width: 1180px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.header .header_left {
+  color: #e82338;
+  font-family: "Bangers", system-ui;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.3rem;
+  font-size: 3.5rem;
+  gap: 16px;
+  text-shadow: 0.21875rem 0.30625rem 0 #000000;
+  -webkit-text-stroke: 1px #000;
+}
+
+.header .ellipse {
+  background-color: #d00000;
+  box-shadow: 2px 2.5px 0 #000000;
+  border: 1px solid black;
+  border-radius: 50%;
+  filter: blur(0.5px);
+  height: 20px;
+  width: 20px;
+}
+
+.header .header_right {
+  text-transform: uppercase;
+}
+
+.header .joining_code {
+  border: 2px solid black;
+  padding: 12px 20px;
+  position: absolute;
+  transform: translate(10px, -10px);
+  background-color: #fbf8e2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header .joining_code:hover {
+  transform: translate(3px, -3px);
+}
+
+.header .joining_code_background {
+  border: 2px solid black;
+  padding: 12px 20px;
+  background-color: #f57c63;
+}
+
+.code_frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  background-color: #00000047;
+}
+
+.code_frame_input {
+  padding: 20px 40px;
+  background-color: #f57c63;
+  border: 4px solid black;
+  position: relative;
+}
+
+.code_frame_input::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(-12px, 12px);
+  z-index: -1;
+  background-color: #000;
+}
+
+.code_frame_input input {
+  font-size: 40px;
+  font-family: "Bangers", system-ui;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid black;
 }
