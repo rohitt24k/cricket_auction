@@ -1,0 +1,47 @@
+.frame {
+  cursor: pointer;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-bottom: 4px dashed #ed5050;
+}
+.frame:hover .name {
+  text-decoration: underline;
+  font-size: 30px;
+}
+
+/* .frame:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 0 4px black;
+} */
+
+.frame .name_img_container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.frame .rectangle {
+  background-color: #d9d9d9;
+  height: 40px;
+  width: 40px;
+}
+
+.frame .name,
+.frame .position {
+  color: #000000;
+  font-family: "Bangers", system-ui;
+  font-weight: 400;
+}
+
+.frame .name {
+  font-size: 28px;
+}
+
+.frame .position {
+  font-size: 20px;
+}

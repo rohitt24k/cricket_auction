@@ -1,0 +1,53 @@
+.header {
+  height: 120px;
+  position: relative;
+  width: 1180px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.header .ellipse {
+  background-color: #d00000;
+  border-radius: 4px;
+  filter: blur(0.5px);
+  height: 8px;
+  left: 222px;
+  position: absolute;
+  top: 56px;
+  width: 8px;
+}
+
+.header .text-wrapper {
+  color: #000000;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 18px;
+  font-weight: 400;
+  left: 792px;
+  letter-spacing: 0;
+  line-height: 28px;
+  position: absolute;
+  top: 45px;
+  white-space: nowrap;
+}
+
+.header .div {
+  color: #000000;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 18px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 28px;
+  position: absolute;
+  top: 45px;
+  white-space: nowrap;
+}
+
+.header .rectangle {
+  background-color: #d9d9d9;
+  height: 80px;
+  left: 1100px;
+  position: absolute;
+  top: 20px;
+  width: 80px;
+}

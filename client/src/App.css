@@ -1,0 +1,4 @@
+#hero_main {
+  display: flex;
+  justify-content: space-between;
+}

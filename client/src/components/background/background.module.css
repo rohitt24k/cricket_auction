@@ -1,0 +1,33 @@
+.background {
+  background-color: #fbf8e2;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: -1;
+  overflow: hidden;
+  /* height: 1024px;
+  width: 1440px; */
+}
+
+.background .overlap_group {
+  height: 100%;
+  background-image: url(./grid_svg.svg);
+  /* background-size: 100% 100%; */
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* height: 1002px;
+  position: relative;
+  top: 11px; */
+}
+
+.background .cricket_man {
+  height: 587px;
+  width: 372px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
