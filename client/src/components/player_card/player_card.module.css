@@ -12,13 +12,6 @@
   font-size: 30px;
 }
 
-/* .frame:hover::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: 0 0 0 4px black;
-} */
-
 .frame .name_img_container {
   display: flex;
   align-items: center;

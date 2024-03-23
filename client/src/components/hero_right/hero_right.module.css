@@ -2,7 +2,10 @@
   background-color: #ff00004c;
   height: 560px;
   width: 380px;
+  display: flex;
+  flex-direction: column;
   position: relative;
+  justify-content: space-between;
 }
 
 .frame::after {

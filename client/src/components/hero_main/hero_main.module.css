@@ -1,0 +1,29 @@
+.frame {
+  display: grid;
+  grid-template-rows: 1.2fr 1fr;
+  gap: 20px;
+  overflow: hidden;
+  width: 440px;
+  position: relative;
+}
+
+.frame .team_bid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.sold_img {
+  backdrop-filter: blur(5px);
+  inset: 0;
+  position: absolute;
+}
+
+.sold_img img {
+  width: 100%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(3px 3px 2px black);
+}

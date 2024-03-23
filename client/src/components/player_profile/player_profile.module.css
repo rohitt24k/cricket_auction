@@ -1,0 +1,21 @@
+.frame {
+  display: flex;
+  /* background-color: blue; */
+  align-items: center;
+  gap: 20px;
+  min-width: 25%;
+  font-family: "Bangers", system-ui;
+  font-size: 24px;
+}
+
+.player_img {
+  background-color: gray;
+  height: 200px;
+  width: 200px;
+}
+
+.player_details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

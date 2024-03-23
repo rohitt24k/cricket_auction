@@ -1,0 +1,137 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Bangers", system-ui;
+  letter-spacing: 2px;
+}
+
+.form_area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #eddcd9;
+  height: auto;
+  width: auto;
+  border: 2px solid #264143;
+  border-radius: 20px;
+  box-shadow: 3px 4px 0px 1px #e99f4c;
+  padding: 20px 12px;
+}
+
+.form_area > form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.title {
+  color: #264143;
+  font-weight: 900;
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+.sub_title {
+  font-weight: 400;
+  margin: 5px 0;
+  font-size: 20px;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  margin: 10px;
+}
+
+.form_style {
+  outline: none;
+  border: 2px solid #264143;
+  box-shadow: 3px 4px 0px 1px #e99f4c;
+  width: 290px;
+  padding: 12px 10px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.form_style:focus,
+.btn:focus {
+  transform: translateY(4px);
+  box-shadow: 1px 2px 0px 0px #e99f4c;
+}
+
+.btn {
+  padding: 15px;
+  margin: 25px 0 4px;
+  width: 290px;
+  font-size: 15px;
+  background: #de5499;
+  border-radius: 10px;
+  font-weight: 800;
+  box-shadow: 3px 3px 0px 0px #e99f4c;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.link {
+  font-weight: 800;
+  color: #264143;
+  padding: 5px;
+}
+
+.form_style_select {
+  outline: none;
+  border: 2px solid #264143;
+  box-shadow: 3px 4px 0px 1px #e99f4c;
+  width: 290px;
+  padding: 12px 10px;
+  border-radius: 4px;
+  font-size: 15px;
+  -webkit-appearance: none; /* Remove default arrow in Chrome/Safari */
+  -moz-appearance: none; /* Remove default arrow in Firefox */
+  appearance: none; /* Remove default arrow in other browsers */
+}
+
+/* Style when select element is focused */
+.form_style_select:focus {
+  transform: translateY(4px);
+  box-shadow: 1px 2px 0px 0px #e99f4c;
+}
+
+.final_submit {
+  grid-column: span 2;
+}
+
+.final_submit > button {
+  width: 100%;
+}
+
+.error {
+  color: rgb(213, 8, 8);
+  margin-top: 8px; /* Adjust as needed */
+  /* box-shadow: 0 0 2px 2px black; */
+  font-size: 16px;
+  text-shadow: 1px 1px 0px rgb(255, 255, 255);
+}
+
+.error > p .error > span {
+  box-shadow: 2px 2px 2px black;
+}
+.extra {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-top: 4px;
+}
+
+.successMessage {
+  margin-top: 14px;
+}

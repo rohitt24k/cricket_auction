@@ -3,7 +3,7 @@ import styles from "./header.module.css";
 import user_context from "../../context/user_context/user_context";
 
 const Header = () => {
-  const { userType, setUserType } = useContext(user_context);
+  const { userType, setUserType, setTeam_name } = useContext(user_context);
   const [show_code_frame, setShow_code_frame] = useState(false);
 
   const elem = useRef();
@@ -57,8 +57,11 @@ const Header = () => {
               onSubmit={(e) => {
                 e.preventDefault();
                 setShow_code_frame((curr) => !curr);
-                if (e.target[0].value == "noice") {
+                if (e.target[0].value == "organizer") {
                   setUserType("organizer");
+                } else if (e.target[0].value.split(" ")[0] == "leader") {
+                  setUserType("team_leader");
+                  setTeam_name(e.target[0].value.split(" ")[1]);
                 }
               }}
             >
