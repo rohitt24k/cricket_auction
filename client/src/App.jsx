@@ -17,7 +17,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Player_detail_upload from "./components/player_detail_upload/player_detail_upload";
 
 function App() {
-  axios.get("https://cricket-auction-api.vercel.app/api/").then((data) => {
+  axios.get("https://cricket-auction-jxb1.onrender.com/api/").then((data) => {
     console.log(data);
   });
   // axios.get("http://localhost:3000/api/").then((data) => {

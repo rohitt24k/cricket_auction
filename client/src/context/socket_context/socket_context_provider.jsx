@@ -22,7 +22,7 @@ function Socket_context_provider({ children }) {
 
   useEffect(() => {
     if (!socket) {
-      const newSocket = io("http://localhost:3000/");
+      const newSocket = io("https://cricket-auction-jxb1.onrender.com/");
       setSocket(newSocket);
       newSocket.on("connect", () => {
         console.log(newSocket.id);
