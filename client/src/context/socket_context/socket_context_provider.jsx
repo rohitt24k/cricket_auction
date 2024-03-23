@@ -22,7 +22,8 @@ function Socket_context_provider({ children }) {
 
   useEffect(() => {
     if (!socket) {
-      const newSocket = io("https://cricket-auction-jxb1.onrender.com/");
+      // const newSocket = io("https://cricket-auction-jxb1.onrender.com/");
+      const newSocket = io("http://localhost:3000/");
       setSocket(newSocket);
       newSocket.on("connect", () => {
         console.log(newSocket.id);
@@ -33,16 +34,18 @@ function Socket_context_provider({ children }) {
       socket.on("selected_player_change", (new_selection) => {
         setSelected(new_selection);
       });
-      socket.on("increase_bid", (team_name) => {
+
+      socket.on("increase_bid", ({ team_name, selected, bidAmount }) => {
+        setSelected(selected);
         setCurrent_player_bid((prev) => {
-          return { ...prev, [team_name]: prev[team_name] + 500 };
+          return { ...prev, [team_name]: bidAmount };
         });
       });
-      socket.on("decrease_bid", (team_name) => {
+
+      socket.on("decrease_bid", ({ team_name, selected, bidAmount }) => {
+        setSelected(selected);
         setCurrent_player_bid((prev) => {
-          if (prev[team_name] != 0)
-            return { ...prev, [team_name]: prev[team_name] - 500 };
-          return prev;
+          return { ...prev, [team_name]: bidAmount };
         });
       });
     }
@@ -54,14 +57,25 @@ function Socket_context_provider({ children }) {
   }
 
   function increase_bid(team_name) {
-    socket.emit("increase_bid", team_name);
+    socket.emit("increase_bid", {
+      team_name,
+      selected,
+      bidAmount: current_player_bid[team_name] + 500,
+    });
     setCurrent_player_bid((prev) => {
       return { ...prev, [team_name]: prev[team_name] + 500 };
     });
   }
 
   function decrease_bid(team_name) {
-    socket.emit("decrease_bid", team_name);
+    socket.emit("decrease_bid", {
+      team_name,
+      selected,
+      bidAmount:
+        current_player_bid[team_name] != 0
+          ? current_player_bid[team_name] - 500
+          : 0,
+    });
     setCurrent_player_bid((prev) => {
       if (prev[team_name] != 0)
         return { ...prev, [team_name]: prev[team_name] - 500 };

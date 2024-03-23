@@ -68,9 +68,13 @@ const Player_detail_upload = () => {
     } else {
       setErrors(formErrors);
       try {
+        const formDataLowercase = {};
+        for (const key in formData) {
+          formDataLowercase[key.toLowerCase()] = formData[key];
+        }
         const result = await axios.post(
-          "http://localhost:3000/inset_player_data/",
-          formData
+          "https://cricket-auction-jxb1.onrender.com/inset_player_data/",
+          formDataLowercase
         );
         // console.log(result);
         // result.data.message
@@ -320,12 +324,19 @@ const Player_detail_upload = () => {
                   widgetRef.current.open();
                 }}
               >
-                upload Image
+                Upload Image{" "}
+                {formData.image && (
+                  <img
+                    className={styles.check_circle}
+                    src="check_circle.svg"
+                    alt="check_circle"
+                  />
+                )}
               </button>
               {errors.image && <p className={styles.error}>{errors.image}</p>}
             </div>
             <div className={styles.final_submit}>
-              <button className={styles.btn}>SIGN UP</button>
+              <button className={styles.btn}>REGISTER</button>
               {errors.error && <p className={styles.error}>{errors.error}</p>}
             </div>
           </form>

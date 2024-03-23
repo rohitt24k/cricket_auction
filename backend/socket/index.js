@@ -20,11 +20,11 @@ function initialize_socket_server(server) {
     socket.on("selected_player_change", (new_selection) => {
       socket.broadcast.emit("selected_player_change", new_selection);
     });
-    socket.on("increase_bid", (team_name) => {
-      socket.broadcast.emit("increase_bid", team_name);
+    socket.on("increase_bid", (data) => {
+      socket.broadcast.emit("increase_bid", data);
     });
-    socket.on("decrease_bid", (team_name) => {
-      socket.broadcast.emit("decrease_bid", team_name);
+    socket.on("decrease_bid", (data) => {
+      socket.broadcast.emit("decrease_bid", data);
     });
   });
   return io;

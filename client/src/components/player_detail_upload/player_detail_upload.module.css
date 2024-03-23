@@ -75,6 +75,10 @@
   font-weight: 800;
   box-shadow: 3px 3px 0px 0px #e99f4c;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn:hover {
