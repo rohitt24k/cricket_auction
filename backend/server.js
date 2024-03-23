@@ -12,7 +12,14 @@ const app = express();
 const server = new http.createServer(app);
 const io = initialize_socket_server(server);
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173/"],
+    // origin: "https://keyblitz.vercel.app",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 app.use("/api", basic_routes);
 app.use("/inset_player_data", player_entry_router);
