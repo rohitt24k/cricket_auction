@@ -5,7 +5,7 @@ function initialize_socket_server(server) {
     cors: {
       origin: [
         "http://localhost:5173",
-        "https://cricket-auction-eta.vercel.app/",
+        "https://cricket-auction-eta.vercel.app",
       ],
       methods: ["GET", "POST"],
     },

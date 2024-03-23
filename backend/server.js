@@ -14,10 +14,7 @@ const io = initialize_socket_server(server);
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://cricket-auction-eta.vercel.app/",
-    ],
+    origin: ["http://localhost:5173", "https://cricket-auction-eta.vercel.app"],
     credentials: true, // If you are sending credentials with the request
   })
 );
