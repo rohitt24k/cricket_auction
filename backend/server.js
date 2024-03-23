@@ -14,10 +14,8 @@ const io = initialize_socket_server(server);
 app.use(express.json());
 app.use(
   cors({
-    origin: ["*"],
-    // origin: "https://keyblitz.vercel.app",
-    methods: ["GET", "POST"],
-    credentials: true,
+    origin: "http://localhost:5173",
+    credentials: true, // If you are sending credentials with the request
   })
 );
 
