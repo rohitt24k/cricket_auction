@@ -3,7 +3,10 @@ const { Server, Socket } = require("socket.io");
 function initialize_socket_server(server) {
   const io = new Server(server, {
     cors: {
-      origin: ["http://localhost:5173"],
+      origin: [
+        "http://localhost:5173",
+        "https://cricket-auction-eta.vercel.app/",
+      ],
       methods: ["GET", "POST"],
     },
   });
