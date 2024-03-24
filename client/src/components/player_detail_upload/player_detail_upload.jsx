@@ -220,6 +220,12 @@ const Player_detail_upload = () => {
                 <option value="ee">EE</option>
                 <option value="ece">ECE</option>
                 <option value="aiml">AIML</option>
+                <option value="csbs">CSBS</option>
+                <option value="csds">CSDS</option>
+                <option value="bca">BCA</option>
+                <option value="b.com">B.COM</option>
+                <option value="eie">EIE</option>
+                <option value="other">Other</option>
               </select>
             </div>
             <div className={styles.form_group}>
