@@ -69,9 +69,15 @@ const Player_detail_upload = () => {
       setErrors(formErrors);
       try {
         const formDataLowercase = {};
+
         for (const key in formData) {
-          formDataLowercase[key.toLowerCase()] = formData[key];
+          if (typeof formData[key] === "string") {
+            formDataLowercase[key.toLowerCase()] = formData[key].toLowerCase();
+          } else {
+            formDataLowercase[key.toLowerCase()] = formData[key];
+          }
         }
+
         const result = await axios.post(
           "https://cricket-auction-jxb1.onrender.com/inset_player_data/",
           formDataLowercase
