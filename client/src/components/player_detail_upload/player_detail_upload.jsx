@@ -72,7 +72,12 @@ const Player_detail_upload = () => {
 
         for (const key in formData) {
           if (typeof formData[key] === "string") {
-            formDataLowercase[key.toLowerCase()] = formData[key].toLowerCase();
+            if (key === "base_price") {
+              formDataLowercase[key.toLowerCase()] = parseInt(formData[key]);
+            } else {
+              formDataLowercase[key.toLowerCase()] =
+                formData[key].toLowerCase();
+            }
           } else {
             formDataLowercase[key.toLowerCase()] = formData[key];
           }
@@ -286,8 +291,8 @@ const Player_detail_upload = () => {
                 value={formData.base_price}
                 onChange={handleChange}
               >
-                <option value="batsman">500</option>
-                <option value="bowler">1000</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
               </select>
             </div>
             <div className={styles.form_group}>
