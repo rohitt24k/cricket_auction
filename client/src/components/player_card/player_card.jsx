@@ -1,13 +1,24 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./player_card.module.css";
 import user_context from "../../context/user_context/user_context";
-import data_context from "../../context/data_context/data_context";
 import socket_context from "../../context/socket_context/socket_context";
 
-const Player_card = ({ name, role, index, clickable = false, image }) => {
+const Player_card = ({
+  name,
+  role,
+  index,
+  clickable = false,
+  sold_price,
+  department,
+  year,
+  image,
+  selected = false,
+}) => {
   const { userType } = useContext(user_context);
   const { handle_selected_player_change } = useContext(socket_context);
+  const [showToggle, setShowToggle] = useState(false);
+  // console.log(image);
 
   // function resizeCloudinaryImage(
   //   url,
@@ -34,23 +45,66 @@ const Player_card = ({ name, role, index, clickable = false, image }) => {
   // }
 
   // const resizeUrl = resizeCloudinaryImage(image, 40, 40);
+
   return (
-    <div
-      className={styles.frame}
-      onClick={() => {
-        if (clickable && userType == "organizer") {
-          handle_selected_player_change(index);
-        }
-      }}
-    >
-      <div className={styles.name_img_container}>
-        {/* <div className={styles.rectangle}>
+    <>
+      <div
+        className={`${styles.frame} ${selected ? styles.selected : ""}`}
+        onClick={() => {
+          if (clickable && userType == "organizer") {
+            handle_selected_player_change(index);
+          } else if (!clickable) {
+            setShowToggle((p) => !p);
+          }
+        }}
+      >
+        <div className={styles.name_img_container}>
+          {/* <div className={styles.rectangle}>
           <img src={resizeUrl} alt="" />
         </div> */}
-        <div className={styles.name}>{name.split(" ")[0]}</div>
+          <div className={styles.name}>{name.split(" ")[0]}</div>
+        </div>
+        <div className={styles.position}>{role}</div>
       </div>
-      <div className={styles.position}>{role}</div>
-    </div>
+      {!clickable && showToggle && (
+        <div className={styles.playerDetails}>
+          <div
+            className={styles.cross}
+            onClick={() => {
+              setShowToggle((p) => !p);
+            }}
+          >
+            O
+          </div>
+          <div className={styles.imageContainer}>
+            {image ? (
+              <img src={image} alt="helmet" />
+            ) : (
+              <img src="./helmet.svg" alt="helmet" />
+            )}
+          </div>
+          <div className={styles.textContainer}>
+            <p className={styles.player_name}>
+              Name: <span>{name}</span>
+            </p>
+            <p className={styles.player_dept}>
+              Dept: <span>{department}</span>
+            </p>
+            <p className={styles.player_year}>
+              Year: <span>{year}</span>
+            </p>
+            <p className={styles.player_role}>
+              Role: <span>{role}</span>
+            </p>
+            {sold_price && (
+              <p className={styles.sold_price}>
+                sold_price: <span>{sold_price}</span>
+              </p>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

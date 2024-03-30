@@ -12,7 +12,7 @@
   background-color: rgba(128, 128, 128, 0.368);
   height: 250px;
   width: 200px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 

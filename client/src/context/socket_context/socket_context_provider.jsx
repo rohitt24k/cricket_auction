@@ -24,8 +24,8 @@ function Socket_context_provider({ children }) {
     }
   }, [selected, data]);
 
-  // const url = "http://localhost:3000/";
-  const url = "https://cricket-auction-jxb1.onrender.com/";
+  const url = "http://localhost:3000/";
+  // const url = "https://cricket-auction-jxb1.onrender.com/";
 
   useEffect(() => {
     if (!socket) {
@@ -44,7 +44,7 @@ function Socket_context_provider({ children }) {
           setSelected(server_selected);
           if (server_bid_data) {
             setCurrent_player_bid(server_bid_data);
-            console.log(server_bid_data);
+            // console.log(server_bid_data);
           }
         }
       );

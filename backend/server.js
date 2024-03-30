@@ -8,6 +8,7 @@ const db_connect = require("./db/connect");
 const cors = require("cors");
 const http = require("http");
 const { initialize_socket_server } = require("./socket");
+const morgan = require("morgan");
 
 require("dotenv").config();
 
@@ -15,6 +16,7 @@ const app = express();
 const server = new http.createServer(app);
 const io = initialize_socket_server(server);
 app.use(express.json());
+app.use(morgan("dev"));
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://cricket-auction-eta.vercel.app"],

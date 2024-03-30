@@ -2,9 +2,11 @@ import { useContext } from "react";
 import Player_card from "../player_card/player_card";
 import styles from "./hero_left.module.css";
 import data_context from "../../context/data_context/data_context";
+import socket_context from "../../context/socket_context/socket_context";
 
 const Hero_left = () => {
   const { data } = useContext(data_context);
+  const { selected } = useContext(socket_context);
 
   return (
     <div className={styles.frame}>
@@ -21,7 +23,7 @@ const Hero_left = () => {
                 key={email}
                 index={i}
                 clickable={true}
-                image={image}
+                selected={i === selected}
               />
             );
           }

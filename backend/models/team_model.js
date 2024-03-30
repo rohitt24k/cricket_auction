@@ -9,6 +9,10 @@ const playerSchema = new mongoose.Schema({
   role: { type: String, required: true },
   base_price: { type: String, required: true },
   sold_price: { type: Number },
+  image: {
+    type: String,
+    default: "",
+  },
 });
 
 // Define team schema

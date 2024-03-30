@@ -58,11 +58,32 @@ const Header = () => {
               onSubmit={(e) => {
                 e.preventDefault();
                 setShow_code_frame((curr) => !curr);
-                if (e.target[0].value == "organizer") {
+                // if (e.target[0].value === "organizer") {
+                //   setUserType("organizer");
+                // } else if (e.target[0].value.split(" ")[0] === "leader") {
+                //   setUserType("team_leader");
+                //   setTeam_name(e.target[0].value.split(" ").slice(1).join(" "));
+                // }
+                if (e.target[0].value === "4820973814") {
                   setUserType("organizer");
-                } else if (e.target[0].value.split(" ")[0] == "leader") {
+                } else if (e.target[0].value === "7592816043") {
                   setUserType("team_leader");
-                  setTeam_name(e.target[0].value.split(" ").slice(1).join(" "));
+                  setTeam_name("eagle thunderbolts");
+                } else if (e.target[0].value === "1630957284") {
+                  setUserType("team_leader");
+                  setTeam_name("ankit royals");
+                } else if (e.target[0].value === "9278150364") {
+                  setUserType("team_leader");
+                  setTeam_name("super kings");
+                } else if (e.target[0].value === "5604382917") {
+                  setUserType("team_leader");
+                  setTeam_name("ruthless runner");
+                } else if (e.target[0].value === "3749620158") {
+                  setUserType("team_leader");
+                  setTeam_name("saurabh super gaints");
+                } else if (e.target[0].value === "9203758164") {
+                  setUserType("team_leader");
+                  setTeam_name("panther paltan");
                 }
               }}
             >

@@ -10,26 +10,35 @@ const Hero_right_viewer = () => {
   const Team = ({ name, players }) => {
     const [show, setShow] = useState(false);
     return (
-      <div
-        className={styles.team_frame}
-        onClick={() => {
-          setShow((p) => !p);
-        }}
-      >
-        <h3>
-          <div className={styles.name}>
-            <span>{name}</span>
-            <span>{show && (players?.length || 0) + "/11"}</span>
-          </div>
-          <div className={`${styles.dropdown} ${show && styles.active}`}>
-            {">"}
-          </div>
-        </h3>
+      <>
+        <div
+          className={styles.team_frame}
+          onClick={() => {
+            setShow((p) => !p);
+          }}
+        >
+          <h3>
+            <div className={styles.name}>
+              <span>{name}</span>
+              <span>{show && (players?.length || 0) + "/11"}</span>
+            </div>
+            <div className={`${styles.dropdown} ${show && styles.active}`}>
+              {">"}
+            </div>
+          </h3>
+        </div>
         {show &&
-          players?.map(({ name, role }, i) => (
-            <Player_card name={name} role={role} key={i} />
+          players?.map(({ name, role, image, department, year }, i) => (
+            <Player_card
+              name={name}
+              role={role}
+              image={image}
+              department={department}
+              year={year}
+              key={-i}
+            />
           ))}
-      </div>
+      </>
     );
   };
 

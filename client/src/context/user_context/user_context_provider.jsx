@@ -8,12 +8,13 @@ function User_context_provider({ children }) {
   const [team_name, setTeam_name] = useState("");
   const [team_point, setTeam_point] = useState(100000);
 
-  const url = "https://cricket-auction-jxb1.onrender.com/";
-  // const url = "http://localhost:3000/";
+  // const url = "https://cricket-auction-jxb1.onrender.com/";
+  const url = "http://localhost:3000/";
 
   async function fetch_point(team_name) {
     const response = await axios.get(`${url}points/${team_name}`);
     const points = response.data.points;
+
     return points;
   }
 
@@ -27,6 +28,8 @@ function User_context_provider({ children }) {
   }, [userType]);
 
   function handle_point_refetch(points) {
+    console.log("i m b called for", points);
+
     setTeam_point(points);
   }
 
