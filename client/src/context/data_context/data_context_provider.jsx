@@ -13,8 +13,8 @@ import user_context from "../user_context/user_context";
 //   "image": "https://drive.google.com/open?id=1m_lhZyc6h5D3Zwt5yU4plxzGthxBg94z"
 // }
 
-// const url = "https://cricket-auction-jxb1.onrender.com/";
-const url = "http://localhost:3000/";
+const url = "https://cricket-auction-jxb1.onrender.com/";
+// const url = "http://localhost:3000/";
 
 function Data_context_provider({ children }) {
   const [data, setData] = useState([]);
