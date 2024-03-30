@@ -12,20 +12,20 @@ function Socket_context_provider({ children }) {
   const [current_player_bid, setCurrent_player_bid] = useState({});
   const [disabled, setDisabled] = useState(false);
 
-  // useEffect(() => {
-  //   // Calculate initial bids when selected changes
-  //   if (data[selected]) {
-  //     const initialBids = {};
-  //     team.forEach(({ name }) => {
-  //       initialBids[name] = data[selected].base_price;
-  //     });
+  useEffect(() => {
+    // Calculate initial bids when selected changes
+    if (data[selected] && Object.keys(current_player_bid).length === 0) {
+      const initialBids = {};
+      team.forEach(({ name }) => {
+        initialBids[name] = data[selected].base_price;
+      });
 
-  //     setCurrent_player_bid(initialBids);
-  //   }
-  // }, [selected, data]);
+      setCurrent_player_bid(initialBids);
+    }
+  }, [selected, data]);
 
-  // const url = "http://localhost:3000/"
-  const url = "https://cricket-auction-jxb1.onrender.com/";
+  const url = "http://localhost:3000/";
+  // const url = "https://cricket-auction-jxb1.onrender.com/";
 
   useEffect(() => {
     if (!socket) {
@@ -73,7 +73,7 @@ function Socket_context_provider({ children }) {
       });
       socket.on("player_is_sold", ({ bid_highest_team_name, selected }) => {
         trigger_team_reload();
-        console.log("this is from the socket", selected);
+        // console.log("this is from the socket", selected);
 
         setData((prev) => {
           const s = [...prev];
@@ -95,8 +95,12 @@ function Socket_context_provider({ children }) {
     }
   }
 
-  function increase_bid(team_name) {
-    if (!disabled && !data[selected].sold) {
+  function increase_bid(team_name, team_point) {
+    if (
+      !disabled &&
+      !data[selected].sold &&
+      team_point > current_player_bid[team_name]
+    ) {
       // socket.emit("increase_bid", {
       //   team_name,
       //   selected,
@@ -113,7 +117,7 @@ function Socket_context_provider({ children }) {
     }
   }
 
-  function decrease_bid(team_name) {
+  function decrease_bid(team_name, team_point) {
     if (!disabled && !data[selected].sold) {
       // socket.emit("decrease_bid", {
       //   team_name,
@@ -154,6 +158,7 @@ function Socket_context_provider({ children }) {
         const response = await axios.post(url + "team/buy", {
           team_name: bid_highest_team_name,
           player_id: data[selected]._id,
+          bid_price: current_player_bid[bid_highest_team_name],
         });
         socket.emit("player_is_sold", {
           bid_highest_team_name,

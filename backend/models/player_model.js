@@ -50,6 +50,9 @@ const playerSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  sold_price: {
+    type: Number,
+  },
 });
 
 // Create the model

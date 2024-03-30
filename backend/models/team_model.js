@@ -8,11 +8,13 @@ const playerSchema = new mongoose.Schema({
   year: { type: String, required: true },
   role: { type: String, required: true },
   base_price: { type: String, required: true },
+  sold_price: { type: Number },
 });
 
 // Define team schema
 const teamSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  points: { type: Number },
   players: [playerSchema], // Array of players using playerSchema
 });
 

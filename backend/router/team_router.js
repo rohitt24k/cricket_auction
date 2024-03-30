@@ -11,13 +11,32 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/buy", async (req, res) => {
-  const { team_name, player_id } = req.body;
+  const { team_name, player_id, bid_price } = req.body;
   try {
     const player = await player_model.findById(player_id);
-    const team = await team_model.updateOne(
+    const team = await team_model.findOne({ name: team_name }, { points: 1 });
+    if (!team) {
+      return res.status(500).json({ error: "The team doesn't exist" });
+    }
+
+    const existingPoints = team.points;
+    const new_price = existingPoints - bid_price;
+    // console.log(bid_price, existingPoints, new_price);
+    if (new_price < 0) {
+      return res
+        .status(500)
+        .json({ error: "The points left cant be less than 0" });
+    }
+    player.sold_price = Number(bid_price);
+    const updatedTeam = await team_model.updateOne(
       { name: team_name },
-      { $push: { players: player } }
+      {
+        $push: { players: player },
+        points: new_price,
+      }
     );
+
+    await player.save();
     if (team.modifiedCount == 0) {
       res.status(500).json({ error: "The team doesn't exists" });
     } else {

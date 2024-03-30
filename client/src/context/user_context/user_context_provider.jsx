@@ -1,13 +1,44 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserContext from "./user_context";
+import axios from "axios";
 
 function User_context_provider({ children }) {
-  const [userType, setUserType] = useState("viewer");
+  const [userType, setUserType] = useState("viewer"); //viewer || organizer || team_leader
   const [team_name, setTeam_name] = useState("");
+  const [team_point, setTeam_point] = useState(100000);
+
+  async function fetch_point(team_name) {
+    const response = await axios.get(
+      `http://localhost:3000/points/${team_name}`
+    );
+    const points = response.data.points;
+    return points;
+  }
+
+  useEffect(() => {
+    if (userType === "team_leader") {
+      const points = fetch_point(team_name);
+      points.then((data) => {
+        setTeam_point(data);
+      });
+    }
+  }, [userType]);
+
+  function handle_point_refetch(points) {
+    setTeam_point(points);
+  }
+
   return (
     <UserContext.Provider
-      value={{ userType, setUserType, team_name, setTeam_name }}
+      value={{
+        userType,
+        setUserType,
+        team_name,
+        setTeam_name,
+        team_point,
+        handle_point_refetch,
+      }}
     >
       {children}
     </UserContext.Provider>

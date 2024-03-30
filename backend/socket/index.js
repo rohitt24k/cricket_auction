@@ -1,4 +1,5 @@
 const { Server, Socket } = require("socket.io");
+const team_model = require("../models/team_model");
 
 function initialize_socket_server(server) {
   const io = new Server(server, {
@@ -12,6 +13,13 @@ function initialize_socket_server(server) {
   });
   let server_selected = 0;
   let server_bid_data = {};
+  let team_points = {};
+  team_model.find({}, { name: 1, points: 1 }).then((res) => {
+    res.forEach((data) => {
+      team_points[data.name] = data["points"];
+    });
+    console.log(team_points);
+  });
 
   // let selected = 0;
   // let current_player_bid = {};

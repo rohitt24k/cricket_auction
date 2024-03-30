@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import data_context from "./data_context";
 import axios from "axios";
+import user_context from "../user_context/user_context";
 // {
 //   "name": "Satwik Roy",
 //   "email": "satwikroy2004@gmail.com",
@@ -12,12 +13,13 @@ import axios from "axios";
 //   "image": "https://drive.google.com/open?id=1m_lhZyc6h5D3Zwt5yU4plxzGthxBg94z"
 // }
 
-const url = "https://cricket-auction-jxb1.onrender.com/";
-// const url = "http://localhost:3000/";
+// const url = "https://cricket-auction-jxb1.onrender.com/";
+const url = "http://localhost:3000/";
 
 function Data_context_provider({ children }) {
   const [data, setData] = useState([]);
   const [team, setTeam] = useState([]);
+  const { team_name, handle_point_refetch } = useContext(user_context);
 
   //fetching all the players from the backend
   useEffect(() => {
@@ -46,6 +48,13 @@ function Data_context_provider({ children }) {
   useEffect(() => {
     fetch_team_data();
   }, []);
+
+  useEffect(() => {
+    const data = team.find((d) => {
+      return d.name === team_name;
+    });
+    handle_point_refetch(data?.points);
+  }, [team]);
 
   function trigger_team_reload() {
     fetch_team_data();

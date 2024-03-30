@@ -31,8 +31,8 @@ function App() {
           <Route
             path="/"
             element={
-              <Data_context_provider>
-                <User_context_provider>
+              <User_context_provider>
+                <Data_context_provider>
                   <Socket_context_provider>
                     <Background />
                     <Header />
@@ -42,8 +42,8 @@ function App() {
                       <Hero_right />
                     </main>
                   </Socket_context_provider>
-                </User_context_provider>
-              </Data_context_provider>
+                </Data_context_provider>
+              </User_context_provider>
             }
           />
           <Route path="/admin" element={<Player_detail_upload />} />

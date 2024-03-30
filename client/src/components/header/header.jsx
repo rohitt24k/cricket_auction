@@ -3,7 +3,8 @@ import styles from "./header.module.css";
 import user_context from "../../context/user_context/user_context";
 
 const Header = () => {
-  const { userType, setUserType, setTeam_name } = useContext(user_context);
+  const { userType, setUserType, setTeam_name, team_point } =
+    useContext(user_context);
   const [show_code_frame, setShow_code_frame] = useState(false);
 
   const elem = useRef();
@@ -22,7 +23,7 @@ const Header = () => {
         <div className={styles.header_right}>
           {userType == "organizer" || userType == "team_leader" ? (
             <>
-              <div className={styles["text-wrapper"]}>Points: 1,00,000</div>
+              <div className={styles["text-wrapper"]}>Points: {team_point}</div>
               <div className={styles.rectangle} />
             </>
           ) : (

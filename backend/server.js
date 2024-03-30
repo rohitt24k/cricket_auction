@@ -3,6 +3,7 @@ const basic_routes = require("./router/basic_router");
 const player_entry_router = require("./router/player_entry_router");
 const player_view_router = require("./router/player_view_router");
 const team_router = require("./router/team_router");
+const point_router = require("./router/points_router");
 const db_connect = require("./db/connect");
 const cors = require("cors");
 const http = require("http");
@@ -25,6 +26,7 @@ app.use("/api", basic_routes);
 app.use("/inset_player_data", player_entry_router);
 app.use("/player_view", player_view_router);
 app.use("/team", team_router);
+app.use("/points", point_router);
 
 server.listen(3000, () => {
   console.log("the server is listening at port 3000");

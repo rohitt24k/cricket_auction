@@ -5,8 +5,7 @@ import socket_context from "../../context/socket_context/socket_context";
 import data_context from "../../context/data_context/data_context";
 
 const Bid_points = () => {
-  const { userType, team_name } = useContext(user_context);
-  const {} = useContext(data_context);
+  const { userType, team_name, team_point } = useContext(user_context);
   const {
     current_player_bid,
     increase_bid,
@@ -21,7 +20,7 @@ const Bid_points = () => {
           <div className={styles.decrease}>
             <button
               onClick={() => {
-                decrease_bid(team_name);
+                decrease_bid(team_name, team_point);
               }}
             >
               -
@@ -31,7 +30,7 @@ const Bid_points = () => {
           <div className={styles.increase}>
             <button
               onClick={() => {
-                increase_bid(team_name);
+                increase_bid(team_name, team_point);
               }}
             >
               +
@@ -43,7 +42,7 @@ const Bid_points = () => {
         <div
           className={`${styles.frame} ${styles.sell}`}
           onClick={() => {
-            handle_player_sell_by_organizer(current_player_bid, selected);
+            handle_player_sell_by_organizer();
           }}
         >
           Sell
