@@ -12,6 +12,9 @@ import axios from "axios";
 //   "image": "https://drive.google.com/open?id=1m_lhZyc6h5D3Zwt5yU4plxzGthxBg94z"
 // }
 
+const url = "https://cricket-auction-jxb1.onrender.com/";
+// const url = "http://localhost:3000/";
+
 function Data_context_provider({ children }) {
   const [data, setData] = useState([]);
   const [team, setTeam] = useState([]);
@@ -20,7 +23,7 @@ function Data_context_provider({ children }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("http://localhost:3000/player_view");
+        const response = await axios.get(url + "player_view");
         // console.log(response);
         setData(response.data);
       } catch (error) {
@@ -32,7 +35,7 @@ function Data_context_provider({ children }) {
 
   async function fetch_team_data() {
     try {
-      const response = await axios.get("http://localhost:3000/team");
+      const response = await axios.get(url + "team");
       // console.log(response.data);
       setTeam(response.data);
     } catch (error) {

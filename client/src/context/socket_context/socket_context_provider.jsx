@@ -24,10 +24,13 @@ function Socket_context_provider({ children }) {
   //   }
   // }, [selected, data]);
 
+  // const url = "http://localhost:3000/"
+  const url = "https://cricket-auction-jxb1.onrender.com/";
+
   useEffect(() => {
     if (!socket) {
-      // const newSocket = io("https://cricket-auction-jxb1.onrender.com/");
-      const newSocket = io("http://localhost:3000/");
+      const newSocket = io(url);
+      // const newSocket = io("http://localhost:3000/");
       setSocket(newSocket);
       newSocket.on("connect", () => {
         console.log(newSocket.id);
@@ -148,7 +151,7 @@ function Socket_context_provider({ children }) {
 
     async function fetchData() {
       try {
-        const response = await axios.post("http://localhost:3000/team/buy", {
+        const response = await axios.post(url + "team/buy", {
           team_name: bid_highest_team_name,
           player_id: data[selected]._id,
         });
