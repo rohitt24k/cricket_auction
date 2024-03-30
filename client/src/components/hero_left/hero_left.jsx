@@ -8,7 +8,7 @@ const Hero_left = () => {
 
   return (
     <div className={styles.frame}>
-      <div className={styles["text-wrapper"]}>YOUR TEAM</div>
+      <div className={styles["text-wrapper"]}>PLAYERS</div>
       {/* <Player_card name="addme" role="hentai" />
       <Player_card name="addme" role="hentai" /> */}
       <div className={styles.player_cards}>
