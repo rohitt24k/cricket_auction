@@ -9,9 +9,19 @@
 }
 
 .player_img {
-  background-color: gray;
-  height: 200px;
+  background-color: rgba(128, 128, 128, 0.368);
+  height: 250px;
   width: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.player_img img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .player_details {

@@ -2,11 +2,18 @@ import { useContext } from "react";
 import styles from "./bid_points.module.css";
 import user_context from "../../context/user_context/user_context";
 import socket_context from "../../context/socket_context/socket_context";
+import data_context from "../../context/data_context/data_context";
 
 const Bid_points = () => {
   const { userType, team_name } = useContext(user_context);
-  const { current_player_bid, increase_bid, decrease_bid } =
-    useContext(socket_context);
+  const {} = useContext(data_context);
+  const {
+    current_player_bid,
+    increase_bid,
+    decrease_bid,
+    selected,
+    handle_player_sell_by_organizer,
+  } = useContext(socket_context);
   return (
     <div className={styles.main_frame}>
       {userType == "team_leader" && (
@@ -33,7 +40,14 @@ const Bid_points = () => {
         </div>
       )}
       {userType == "organizer" && (
-        <div className={`${styles.frame} ${styles.sell}`}>Sell</div>
+        <div
+          className={`${styles.frame} ${styles.sell}`}
+          onClick={() => {
+            handle_player_sell_by_organizer(current_player_bid, selected);
+          }}
+        >
+          Sell
+        </div>
       )}
     </div>
   );

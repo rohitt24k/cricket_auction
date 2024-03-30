@@ -12,7 +12,7 @@ const Hero_left = () => {
       {/* <Player_card name="addme" role="hentai" />
       <Player_card name="addme" role="hentai" /> */}
       <div className={styles.player_cards}>
-        {data.map(({ name, email, role, position }, i) => {
+        {data.map(({ name, email, role, position, image }, i) => {
           if (position != "leader") {
             return (
               <Player_card
@@ -21,6 +21,7 @@ const Hero_left = () => {
                 key={email}
                 index={i}
                 clickable={true}
+                image={image}
               />
             );
           }

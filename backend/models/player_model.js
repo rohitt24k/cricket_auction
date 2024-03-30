@@ -46,6 +46,10 @@ const playerSchema = new mongoose.Schema({
       return this.player_type === "team_leader";
     },
   },
+  sold: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Create the model

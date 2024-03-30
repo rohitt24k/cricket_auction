@@ -61,7 +61,7 @@ const Header = () => {
                   setUserType("organizer");
                 } else if (e.target[0].value.split(" ")[0] == "leader") {
                   setUserType("team_leader");
-                  setTeam_name(e.target[0].value.split(" ")[1]);
+                  setTeam_name(e.target[0].value.split(" ").slice(1).join(" "));
                 }
               }}
             >
