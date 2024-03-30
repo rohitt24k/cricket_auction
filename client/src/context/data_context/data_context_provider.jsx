@@ -53,7 +53,9 @@ function Data_context_provider({ children }) {
     const data = team.find((d) => {
       return d.name === team_name;
     });
-    handle_point_refetch(data?.points);
+    if (data.points) {
+      handle_point_refetch(data.points);
+    }
   }, [team]);
 
   function trigger_team_reload() {
