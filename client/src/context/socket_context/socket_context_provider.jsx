@@ -181,7 +181,7 @@ function Socket_context_provider({ children }) {
   }
 
   function handle_player_sell_by_organizer() {
-    if (!data[selected].sold) {
+    if (!data[selected].sold && !disabled) {
       handle();
     }
   }
