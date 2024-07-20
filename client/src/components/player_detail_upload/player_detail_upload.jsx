@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./player_detail_upload.module.css";
 import axios from "axios";
+import { animate, motion } from "framer-motion";
+
+const itemVarient = {
+  initial: { y: 10, opacity: 0 },
+  open: { y: 0, opacity: 1 },
+};
 
 const Player_detail_upload = () => {
   const [successMessage, setSuccessMessage] = useState("");
@@ -175,17 +181,33 @@ const Player_detail_upload = () => {
         upload
       </button> */}
       <div className={styles.container}>
-        <div className={styles.form_area}>
+        <motion.div
+          className={styles.form_area}
+          initial="initial"
+          animate="open"
+          variants={{
+            initial: { y: 20, opacity: 0 }, // Initial state
+            open: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                type: "spring",
+                delayChildren: 0.3,
+                staggerChildren: 0.07,
+              },
+            },
+          }}
+        >
           <p className={styles.title}>PLAYER DETAIL</p>
           <form onSubmit={handleSubmit}>
-            <div className={styles.form_group}>
+            <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="name">
                 Name{" "}
                 {errors.name && (
                   <span className={styles.error}>({errors.name})</span>
                 )}
               </label>
-              <input
+              <motion.input
                 name="name"
                 placeholder="Enter your full name"
                 id="name"
@@ -193,16 +215,17 @@ const Player_detail_upload = () => {
                 type="text"
                 value={formData.name}
                 onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
               />
-            </div>
-            <div className={styles.form_group}>
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="email">
                 Email{" "}
                 {errors.email && (
                   <span className={styles.error}>({errors.email})</span>
                 )}
               </label>
-              <input
+              <motion.input
                 name="email"
                 placeholder="Enter your email"
                 id="email"
@@ -210,21 +233,23 @@ const Player_detail_upload = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
               />
-            </div>
-            <div className={styles.form_group}>
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="department">
                 Department{" "}
                 {errors.department && (
                   <span className={styles.error}>({errors.department})</span>
                 )}
               </label>
-              <select
+              <motion.select
                 name="department"
                 id="department"
                 className={styles.form_style_select}
                 value={formData.department}
                 onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
               >
                 <option value="cse">CSE</option>
                 <option value="it">IT</option>
@@ -237,81 +262,85 @@ const Player_detail_upload = () => {
                 <option value="b.com">B.COM</option>
                 <option value="eie">EIE</option>
                 <option value="other">Other</option>
-              </select>
-            </div>
-            <div className={styles.form_group}>
+              </motion.select>
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="year">
                 Year{" "}
                 {errors.year && (
                   <span className={styles.error}>({errors.year})</span>
                 )}
               </label>
-              <select
+              <motion.select
                 name="year"
                 id="year"
                 className={styles.form_style_select}
                 value={formData.year}
                 onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
               >
                 <option value="first">First</option>
                 <option value="second">Second</option>
                 <option value="third">Third</option>
                 <option value="fourth">Fourth</option>
-              </select>
-            </div>
-            <div className={styles.form_group}>
+              </motion.select>
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="role">
                 Role{" "}
                 {errors.role && <p className={styles.error}>({errors.role})</p>}
               </label>
-              <select
+              <motion.select
                 name="role"
                 id="role"
                 className={styles.form_style_select}
                 value={formData.role}
                 onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
               >
                 <option value="all_rounder">All Rounder</option>
                 <option value="wicket_keeper">Wicket Keeper</option>
                 <option value="batsman">Batsman</option>
                 <option value="bowler">Bowler</option>
-              </select>
-            </div>
-            <div className={styles.form_group}>
+              </motion.select>
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="base_price">
                 Base Price{" "}
                 {errors.base_price && (
                   <span className={styles.error}>({errors.base_price})</span>
                 )}
               </label>
-              <select
+              <motion.select
                 name="base_price"
                 id="base_price"
                 className={styles.form_style_select}
                 value={formData.base_price}
                 onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
               >
                 <option value="500">500</option>
                 <option value="1000">1000</option>
-              </select>
-            </div>
-            <div className={styles.form_group}>
+              </motion.select>
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="player_type">
                 Select player type{" "}
                 {errors.player_type && (
                   <span className={styles.error}>({errors.player_type})</span>
                 )}
               </label>
-              <select
+              <motion.select
                 name="player_type"
                 id="player_type"
                 className={styles.form_style_select}
                 value={formData.player_type}
                 onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
               >
                 <option value="player">Player</option>
                 <option value="team_leader">Team Leader</option>
-              </select>
+              </motion.select>
               {formData.player_type == "team_leader" && (
                 <div className={styles.extra}>
                   <label className={styles.sub_title} htmlFor="team_name">
@@ -320,7 +349,7 @@ const Player_detail_upload = () => {
                       <span className={styles.error}>({errors.team_name})</span>
                     )}
                   </label>
-                  <input
+                  <motion.input
                     name="team_name"
                     placeholder="Enter your Team Name"
                     id="team_name"
@@ -328,18 +357,20 @@ const Player_detail_upload = () => {
                     type="text"
                     value={formData.team_name}
                     onChange={handleChange}
+                    whileHover={{ scale: 1.03 }}
                   />
                 </div>
               )}
-            </div>
-
-            <div className={styles.form_group}>
-              <button
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
+              <motion.button
                 className={styles.btn}
                 type="button"
                 onClick={() => {
                   widgetRef.current.open();
                 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.99 }}
               >
                 Upload Image{" "}
                 {formData.image && (
@@ -349,18 +380,24 @@ const Player_detail_upload = () => {
                     alt="check_circle"
                   />
                 )}
-              </button>
+              </motion.button>
               {errors.image && <p className={styles.error}>{errors.image}</p>}
-            </div>
-            <div className={styles.final_submit}>
-              <button className={styles.btn}>REGISTER</button>
+            </motion.div>
+            <motion.div className={styles.final_submit} variants={itemVarient}>
+              <motion.button
+                className={styles.btn}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.99 }}
+              >
+                REGISTER
+              </motion.button>
               {errors.error && <p className={styles.error}>{errors.error}</p>}
-            </div>
+            </motion.div>
           </form>
           {successMessage && (
             <p className={styles.successMessage}>{successMessage}</p>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

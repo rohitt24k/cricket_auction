@@ -1,4 +1,9 @@
 .container {
+  position: absolute;
+  top: 0 ;
+  left: 0;
+  background-color: #fbf8e2;
+  width: 100vw;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -59,12 +64,6 @@
   font-size: 15px;
 }
 
-.form_style:focus,
-.btn:focus {
-  transform: translateY(4px);
-  box-shadow: 1px 2px 0px 0px #e99f4c;
-}
-
 .btn {
   padding: 15px;
   margin: 25px 0 4px;
@@ -105,10 +104,6 @@
 }
 
 /* Style when select element is focused */
-.form_style_select:focus {
-  transform: translateY(4px);
-  box-shadow: 1px 2px 0px 0px #e99f4c;
-}
 
 .final_submit {
   grid-column: span 2;

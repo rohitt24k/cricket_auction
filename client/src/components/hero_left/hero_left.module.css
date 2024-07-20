@@ -30,6 +30,7 @@
 
 .frame .player_cards {
   overflow: auto;
+  overflow-x: hidden;
   /* background-color: blue; */
 }
 

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import styles from "./player_card.module.css";
 import user_context from "../../context/user_context/user_context";
 import socket_context from "../../context/socket_context/socket_context";
+import { motion } from "framer-motion";
 
 const Player_card = ({
   name,
@@ -47,8 +48,12 @@ const Player_card = ({
   // const resizeUrl = resizeCloudinaryImage(image, 40, 40);
 
   return (
-    <>
-      <div
+    <motion.div
+      initial={!clickable && { x: 10, opacity: 0 }}
+      whileInView={!clickable && { x: 0, opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0 }}
+    >
+      <motion.div
         className={`${styles.frame} ${selected ? styles.selected : ""}`}
         onClick={() => {
           if (clickable && userType == "organizer") {
@@ -57,6 +62,8 @@ const Player_card = ({
             setShowToggle((p) => !p);
           }
         }}
+        whileHover={{ scale: 1.04 }}
+        whileTap={{ scale: 0.99 }}
       >
         <div className={styles.name_img_container}>
           {/* <div className={styles.rectangle}>
@@ -65,7 +72,7 @@ const Player_card = ({
           <div className={styles.name}>{name.split(" ")[0]}</div>
         </div>
         <div className={styles.position}>{role}</div>
-      </div>
+      </motion.div>
       {!clickable && showToggle && (
         <div className={styles.playerDetails}>
           <div
@@ -104,7 +111,7 @@ const Player_card = ({
           </div>
         </div>
       )}
-    </>
+    </motion.div>
   );
 };
 
