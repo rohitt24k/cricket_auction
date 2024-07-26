@@ -93,8 +93,8 @@ const Player_detail_upload = () => {
         }
         setIsLoading(true);
         const result = await axios.post(
-          // "https://cricket-auction-jxb1.onrender.com/insert_player_data/",
-          "http://localhost:3000/insert_player_data",
+          "https://cricket-auction-jxb1.onrender.com/insert_player_data/",
+          // "http://localhost:3000/insert_player_data",
           formDataLowercase
         );
         // console.log(result);
