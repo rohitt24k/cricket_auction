@@ -46,6 +46,7 @@ const Player_detail_upload = () => {
     email: "",
     department: "",
     year: "",
+    previous_team: "",
     role: "",
     base_price: "",
     player_type: "",
@@ -92,7 +93,8 @@ const Player_detail_upload = () => {
         }
         setIsLoading(true);
         const result = await axios.post(
-          "https://cricket-auction-jxb1.onrender.com/inset_player_data/",
+          // "https://cricket-auction-jxb1.onrender.com/insert_player_data/",
+          "http://localhost:3000/insert_player_data",
           formDataLowercase
         );
         // console.log(result);
@@ -220,6 +222,7 @@ const Player_detail_upload = () => {
                 value={formData.name}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               />
             </motion.div>
             <motion.div className={styles.form_group} variants={itemVarient}>
@@ -238,6 +241,7 @@ const Player_detail_upload = () => {
                 value={formData.email}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               />
             </motion.div>
             <motion.div className={styles.form_group} variants={itemVarient}>
@@ -254,6 +258,7 @@ const Player_detail_upload = () => {
                 value={formData.department}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               >
                 <option value="cse">CSE</option>
                 <option value="it">IT</option>
@@ -282,6 +287,7 @@ const Player_detail_upload = () => {
                 value={formData.year}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               >
                 <option value="first">First</option>
                 <option value="second">Second</option>
@@ -290,9 +296,11 @@ const Player_detail_upload = () => {
               </motion.select>
             </motion.div>
             <motion.div className={styles.form_group} variants={itemVarient}>
-              <label className={styles.sub_title} htmlFor="role">
+              <label className={styles.sub_title} htmlFor="previous_team">
                 Previous Team(if any){" "}
-                {errors.role && <p className={styles.error}>({errors.role})</p>}
+                {errors.previous_team && (
+                  <p className={styles.error}>({errors.previous_team})</p>
+                )}
               </label>
               <motion.select
                 name="previous_team"
@@ -301,6 +309,7 @@ const Player_detail_upload = () => {
                 value={formData.previous_team}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               >
                 <option value="none">None</option>
                 <option value="eagle thunderbolts">Eagle Thunderbolts</option>
@@ -325,6 +334,7 @@ const Player_detail_upload = () => {
                 value={formData.role}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               >
                 <option value="all_rounder">All Rounder</option>
                 <option value="wicket_keeper">Wicket Keeper</option>
@@ -346,6 +356,7 @@ const Player_detail_upload = () => {
                 value={formData.base_price}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               >
                 <option value="500">500</option>
                 <option value="1000">1000</option>
@@ -365,6 +376,7 @@ const Player_detail_upload = () => {
                 value={formData.player_type}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
               >
                 <option value="player">Player</option>
                 <option value="team_leader">Team Leader</option>
@@ -386,6 +398,7 @@ const Player_detail_upload = () => {
                     value={formData.team_name}
                     onChange={handleChange}
                     whileHover={{ scale: 1.03 }}
+                    whileFocus={{ scale: 1.03 }}
                   />
                 </div>
               )}
@@ -401,6 +414,7 @@ const Player_detail_upload = () => {
                   widgetRef.current.open();
                 }}
                 whileHover={{ scale: 1.03 }}
+                whileFocus={{ scale: 1.03 }}
                 whileTap={{ scale: 0.99 }}
               >
                 Upload Your Image{" "}
@@ -418,6 +432,7 @@ const Player_detail_upload = () => {
               <motion.button
                 className={styles.btn}
                 whileHover={{ scale: 1.02 }}
+                whileFocus={{ scale: 1.03 }}
                 whileTap={{ scale: 0.99 }}
                 disabled={isLoading}
               >

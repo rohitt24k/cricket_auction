@@ -6,7 +6,6 @@ const playerSchema = new mongoose.Schema({
   email: { type: String, required: true },
   department: { type: String, required: true },
   year: { type: String, required: true },
-  previous_team: { type: String },
   role: { type: String, required: true },
   base_price: { type: String, required: true },
   sold_price: { type: Number },

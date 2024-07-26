@@ -25,7 +25,7 @@
   border: 2px solid #264143;
   border-radius: 20px;
   box-shadow: 3px 4px 0px 1px #e99f4c;
-  padding: 20px 12px;
+  padding: 10px 24px;
 }
 
 .form_area > form {
@@ -36,8 +36,8 @@
 .title {
   color: #264143;
   font-weight: 900;
-  font-size: 30px;
-  margin: 20px 0;
+  font-size: 35px;
+  margin: 10px 0;
 }
 
 .sub_title {

@@ -25,7 +25,7 @@ app.use(
 );
 
 app.use("/api", basic_routes);
-app.use("/inset_player_data", player_entry_router);
+app.use("/insert_player_data", player_entry_router);
 app.use("/player_view", player_view_router);
 app.use("/team", team_router);
 app.use("/points", point_router);

@@ -20,6 +20,9 @@ const playerSchema = new mongoose.Schema({
     required: true,
     default: "first",
   },
+  previous_team: {
+    type: String,
+  },
   role: {
     type: String,
     required: true,
