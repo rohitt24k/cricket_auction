@@ -287,6 +287,30 @@ const Player_detail_upload = () => {
             </motion.div>
             <motion.div className={styles.form_group} variants={itemVarient}>
               <label className={styles.sub_title} htmlFor="role">
+                Previous Team(if any){" "}
+                {errors.role && <p className={styles.error}>({errors.role})</p>}
+              </label>
+              <motion.select
+                name="role"
+                id="role"
+                className={styles.form_style_select}
+                value={formData.role}
+                onChange={handleChange}
+                whileHover={{ scale: 1.03 }}
+              >
+                <option value="none">None</option>
+                <option value="eagle thunderbolts">Eagle Thunderbolts</option>
+                <option value="ankit royals">Ankit Royals</option>
+                <option value="super kings">Super Kings</option>
+                <option value="ruthless runner">Ruthless Runner</option>
+                <option value="saurabh super gaints">
+                  Saurabh Super Gaints
+                </option>
+                <option value="panther paltan">Panther Paltan</option>
+              </motion.select>
+            </motion.div>
+            <motion.div className={styles.form_group} variants={itemVarient}>
+              <label className={styles.sub_title} htmlFor="role">
                 Role{" "}
                 {errors.role && <p className={styles.error}>({errors.role})</p>}
               </label>
@@ -362,7 +386,10 @@ const Player_detail_upload = () => {
                 </div>
               )}
             </motion.div>
-            <motion.div className={styles.form_group} variants={itemVarient}>
+            <motion.div
+              className={styles.form_upload_image}
+              variants={itemVarient}
+            >
               <motion.button
                 className={styles.btn}
                 type="button"
@@ -372,7 +399,7 @@ const Player_detail_upload = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.99 }}
               >
-                Upload Image{" "}
+                Upload Your Image{" "}
                 {formData.image && (
                   <img
                     className={styles.check_circle}
