@@ -46,7 +46,7 @@ function App() {
               </User_context_provider>
             }
           />
-          <Route path="/admin" element={<Player_detail_upload />} />
+          <Route path="/register" element={<Player_detail_upload />} />
         </Routes>
       </BrowserRouter>
     </div>

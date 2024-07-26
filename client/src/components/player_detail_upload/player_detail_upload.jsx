@@ -10,6 +10,7 @@ const itemVarient = {
 
 const Player_detail_upload = () => {
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const cloudinaryRef = useRef(null);
   const widgetRef = useRef(null);
   useEffect(() => {
@@ -33,6 +34,7 @@ const Player_detail_upload = () => {
     email: "",
     department: "cse",
     year: "first",
+    previous_team: "none",
     role: "all_rounder",
     base_price: "500",
     player_type: "player",
@@ -88,7 +90,7 @@ const Player_detail_upload = () => {
             formDataLowercase[key.toLowerCase()] = formData[key];
           }
         }
-
+        setIsLoading(true);
         const result = await axios.post(
           "https://cricket-auction-jxb1.onrender.com/inset_player_data/",
           formDataLowercase
@@ -135,6 +137,8 @@ const Player_detail_upload = () => {
           // Handle other types of errors (e.g., network errors)
           // You can display a generic error message to the user
         }
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -291,10 +295,10 @@ const Player_detail_upload = () => {
                 {errors.role && <p className={styles.error}>({errors.role})</p>}
               </label>
               <motion.select
-                name="role"
-                id="role"
+                name="previous_team"
+                id="previous_team"
                 className={styles.form_style_select}
-                value={formData.role}
+                value={formData.previous_team}
                 onChange={handleChange}
                 whileHover={{ scale: 1.03 }}
               >
@@ -415,8 +419,18 @@ const Player_detail_upload = () => {
                 className={styles.btn}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.99 }}
+                disabled={isLoading}
               >
-                REGISTER
+                {isLoading ? (
+                  <img
+                    src="loader.svg"
+                    alt="loading..."
+                    width={30}
+                    height={30}
+                  />
+                ) : (
+                  "REGISTER"
+                )}
               </motion.button>
               {errors.error && <p className={styles.error}>{errors.error}</p>}
             </motion.div>
