@@ -16,7 +16,7 @@ const Player_card = ({
   image,
   selected = false,
 }) => {
-  const { userType } = useContext(user_context);
+  const { userType, fetchAllTeamPoints } = useContext(user_context);
   const { handle_selected_player_change } = useContext(socket_context);
   const [showToggle, setShowToggle] = useState(false);
   // console.log(image);
@@ -58,6 +58,7 @@ const Player_card = ({
         onClick={() => {
           if (clickable && userType == "organizer") {
             handle_selected_player_change(index);
+            fetchAllTeamPoints();
           } else if (!clickable) {
             setShowToggle((p) => !p);
           }

@@ -7,6 +7,7 @@ function User_context_provider({ children }) {
   const [userType, setUserType] = useState("viewer"); //viewer || organizer || team_leader
   const [team_name, setTeam_name] = useState("");
   const [team_point, setTeam_point] = useState(150000);
+  const [allTeamPoints, setAllTeamPoints] = useState(null);
 
   const url = "https://cricket-auction-jxb1.onrender.com/";
   // const url = "http://localhost:3000/";
@@ -18,6 +19,12 @@ function User_context_provider({ children }) {
     return points;
   }
 
+  function fetchAllTeamPoints() {
+    axios.get(`${url}points`).then((response) => {
+      setAllTeamPoints(response.data);
+    });
+  }
+
   useEffect(() => {
     if (userType === "team_leader") {
       console.log("we are fetching team details...");
@@ -26,6 +33,8 @@ function User_context_provider({ children }) {
       points.then((data) => {
         setTeam_point(data);
       });
+    } else if (userType === "organizer") {
+      fetchAllTeamPoints();
     }
   }, [userType]);
 
@@ -44,6 +53,8 @@ function User_context_provider({ children }) {
         setTeam_name,
         team_point,
         handle_point_refetch,
+        allTeamPoints,
+        fetchAllTeamPoints,
       }}
     >
       {children}

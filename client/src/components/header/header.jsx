@@ -4,7 +4,7 @@ import user_context from "../../context/user_context/user_context";
 import socket_context from "../../context/socket_context/socket_context";
 
 const Header = () => {
-  const { userType, setUserType, setTeam_name, team_point } =
+  const { userType, setUserType, setTeam_name, team_point, allTeamPoints } =
     useContext(user_context);
   const [show_code_frame, setShow_code_frame] = useState(false);
 
@@ -25,9 +25,26 @@ const Header = () => {
           {userType == "organizer" || userType == "team_leader" ? (
             <>
               <div className={styles["text-wrapper"]}>
-                {userType === "organizer"
-                  ? "Organizer"
-                  : "Points: " + team_point}
+                {userType === "organizer" ? (
+                  <div style={{ display: "flex", gap: "12px" }}>
+                    {allTeamPoints?.map((team) => (
+                      <div
+                        style={{
+                          fontSize: "12px",
+                          display: "flex",
+                          gap: "4px",
+                          flexDirection: "column",
+                          alignItems: "center",
+                        }}
+                      >
+                        <p>{team.name.split(" ")[0]}</p>
+                        <p>{team.points}</p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  "Points: " + team_point
+                )}
               </div>
               <div className={styles.rectangle} />
             </>
