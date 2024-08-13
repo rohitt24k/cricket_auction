@@ -107,11 +107,18 @@ function Socket_context_provider({ children }) {
       //   bidAmount: current_player_bid[team_name] + 500,
       // });
       setCurrent_player_bid((prev) => {
-        const newPrev = { ...prev, [team_name]: prev[team_name] + 500 };
+        const newPrev = {
+          ...prev,
+          [team_name]: Math.max(
+            prev[team_name] + 500,
+            Math.max(...Object.values(prev))
+          ),
+        };
         socket.emit("increase_bid", {
           newPrev,
           selected,
         });
+
         return newPrev;
       });
     }

@@ -6,7 +6,7 @@ import axios from "axios";
 function User_context_provider({ children }) {
   const [userType, setUserType] = useState("viewer"); //viewer || organizer || team_leader
   const [team_name, setTeam_name] = useState("");
-  const [team_point, setTeam_point] = useState(100000);
+  const [team_point, setTeam_point] = useState(150000);
 
   const url = "https://cricket-auction-jxb1.onrender.com/";
   // const url = "http://localhost:3000/";
@@ -20,6 +20,8 @@ function User_context_provider({ children }) {
 
   useEffect(() => {
     if (userType === "team_leader") {
+      console.log("we are fetching team details...");
+
       const points = fetch_point(team_name);
       points.then((data) => {
         setTeam_point(data);

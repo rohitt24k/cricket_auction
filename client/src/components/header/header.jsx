@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./header.module.css";
 import user_context from "../../context/user_context/user_context";
+import socket_context from "../../context/socket_context/socket_context";
 
 const Header = () => {
   const { userType, setUserType, setTeam_name, team_point } =
@@ -23,7 +24,11 @@ const Header = () => {
         <div className={styles.header_right}>
           {userType == "organizer" || userType == "team_leader" ? (
             <>
-              <div className={styles["text-wrapper"]}>Points: {team_point}</div>
+              <div className={styles["text-wrapper"]}>
+                {userType === "organizer"
+                  ? "Organizer"
+                  : "Points: " + team_point}
+              </div>
               <div className={styles.rectangle} />
             </>
           ) : (
@@ -68,22 +73,22 @@ const Header = () => {
                   setUserType("organizer");
                 } else if (e.target[0].value === "7592816043") {
                   setUserType("team_leader");
-                  setTeam_name("eagle thunderbolts");
+                  setTeam_name("fearless falcons");
                 } else if (e.target[0].value === "1630957284") {
                   setUserType("team_leader");
                   setTeam_name("ankit royals");
                 } else if (e.target[0].value === "9278150364") {
                   setUserType("team_leader");
-                  setTeam_name("super kings");
+                  setTeam_name("panthar paltan");
                 } else if (e.target[0].value === "5604382917") {
                   setUserType("team_leader");
-                  setTeam_name("ruthless runner");
+                  setTeam_name("the forever knights");
                 } else if (e.target[0].value === "3749620158") {
                   setUserType("team_leader");
-                  setTeam_name("saurabh super gaints");
+                  setTeam_name("saurabh super giants");
                 } else if (e.target[0].value === "9203758164") {
                   setUserType("team_leader");
-                  setTeam_name("panther paltan");
+                  setTeam_name("super kings");
                 }
               }}
             >

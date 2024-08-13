@@ -44,9 +44,10 @@ function initialize_socket_server(server) {
     });
 
     socket.on("increase_bid", (data) => {
-      server_selected = data.selected;
-      server_bid_data[server_selected] = data.newPrev;
-      socket.broadcast.emit("increase_bid", data);
+      const { selected, newPrev } = data;
+      server_selected = selected;
+      server_bid_data[server_selected] = newPrev;
+      io.emit("increase_bid", data);
     });
 
     socket.on("decrease_bid", (data) => {

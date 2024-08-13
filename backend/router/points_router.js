@@ -9,4 +9,9 @@ router.get("/:team_name", async (req, res) => {
   res.send(data);
 });
 
+router.get("/", async (req, res) => {
+  const data = await team_model.find({}, { points: 1 });
+  res.send(data);
+});
+
 module.exports = router;

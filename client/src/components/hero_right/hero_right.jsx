@@ -16,12 +16,17 @@ const Hero_right = () => {
     return (
       <div className={styles.frame}>
         <div className={styles.player_card}>
-          <div className={styles["text-wrapper"]}>YOUR TEAM</div>
+          <div
+            className={styles["text-wrapper"]}
+            style={{ textTransform: "uppercase" }}
+          >
+            {team_name}
+          </div>
           {team
             .find((d) => {
               return d.name === team_name;
             })
-            .players.map(({ name, role, sold_price }, i) => (
+            ?.players.map(({ name, role, sold_price }, i) => (
               <Player_card
                 name={name}
                 role={role}
