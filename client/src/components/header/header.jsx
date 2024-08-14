@@ -86,24 +86,24 @@ const Header = () => {
                 //   setUserType("team_leader");
                 //   setTeam_name(e.target[0].value.split(" ").slice(1).join(" "));
                 // }
-                if (e.target[0].value === "4820973814") {
+                if (e.target[0].value === "9275648391") {
                   setUserType("organizer");
-                } else if (e.target[0].value === "7592816043") {
+                } else if (e.target[0].value === "5829364017") {
                   setUserType("team_leader");
                   setTeam_name("fearless falcons");
-                } else if (e.target[0].value === "1630957284") {
+                } else if (e.target[0].value === "1934852076") {
                   setUserType("team_leader");
                   setTeam_name("ankit royals");
-                } else if (e.target[0].value === "9278150364") {
+                } else if (e.target[0].value === "7462915384") {
                   setUserType("team_leader");
                   setTeam_name("panthar paltan");
-                } else if (e.target[0].value === "5604382917") {
+                } else if (e.target[0].value === "8204751936") {
                   setUserType("team_leader");
                   setTeam_name("the forever knights");
-                } else if (e.target[0].value === "3749620158") {
+                } else if (e.target[0].value === "3906842517") {
                   setUserType("team_leader");
                   setTeam_name("saurabh super giants");
-                } else if (e.target[0].value === "9203758164") {
+                } else if (e.target[0].value === "5732198640") {
                   setUserType("team_leader");
                   setTeam_name("super kings");
                 }
