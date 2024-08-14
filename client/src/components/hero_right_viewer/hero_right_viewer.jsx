@@ -20,7 +20,7 @@ const Hero_right_viewer = () => {
           <h3>
             <div className={styles.name}>
               <span>{name}</span>
-              <span>{show && (players?.length || 0) + "/16"}</span>
+              <span>{show && (players?.length || 0) + "/17"}</span>
             </div>
             <div className={`${styles.dropdown} ${show && styles.active}`}>
               {">"}
